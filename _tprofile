@@ -1,0 +1,39 @@
+#compdef tprofile
+#
+# Completion for the tprofile command.
+#  - first word: the subcommands (with descriptions)
+#  - second word: existing profile names, for the subcommands that take one
+
+_tprofile() {
+  local -a subcmds
+  subcmds=(
+    'list:List existing profiles'
+    'ls:List existing profiles'
+    'new:Create a new profile'
+    'use:Activate a profile in the current shell'
+    'window:Open a new terminal window in a profile'
+    'edit:Edit a profile rc.zsh'
+    'remove:Remove a profile and its history'
+    'rm:Remove a profile and its history'
+    'current:Show the active profile'
+    'help:Show help'
+  )
+
+  if (( CURRENT == 2 )); then
+    _describe -t commands 'tprofile subcommand' subcmds
+    return
+  fi
+
+  if (( CURRENT == 3 )); then
+    case "${words[2]}" in
+      use|window|edit|remove|rm)
+        local dir="${TPROFILE_DIR:-$HOME/.config/term-profiles}"
+        local -a profiles
+        profiles=(${dir}/*(/N:t))
+        _describe -t profiles 'profile' profiles
+        ;;
+    esac
+  fi
+}
+
+_tprofile "$@"

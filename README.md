@@ -20,7 +20,7 @@ projects in the same terminal without cross-contaminating contexts.
 ### With `install.sh`
 
 ```sh
-git clone <repo-url> tprofile
+git clone https://github.com/Robyt96/tprofile.git tprofile
 cd tprofile
 ./install.sh
 ```
@@ -32,7 +32,7 @@ the line to add.
 ### Manual
 
 ```sh
-git clone <repo-url> "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/tprofile"
+git clone https://github.com/Robyt96/tprofile.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/tprofile"
 ```
 
 Then enable it by adding `tprofile` to the plugins list in `~/.zshrc`:
